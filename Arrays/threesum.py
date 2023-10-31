@@ -15,17 +15,20 @@ Input: [7,4,-7,0] Output: [[0,-7,7]], OR [[7,-7,0]], etc.
 def threeSum(nums,target):
     nums.sort()
     triplets_array = []
-    for i in range(len(nums) - 2):
-        left = i + 1
-        right = len(nums) - 1
-        while left < right:
-            current_sum = nums[i] + nums[left] + nums[right]
-            if current_sum == target:
-                triplets_array.append([nums[i], nums[left], nums[right]])
-                left += 1
-                right -= 1
-            elif current_sum < target:
-                left += 1
-            elif current_sum > target:
-                right -= 1
+    for i, a in enumerate(nums):
+        if i > 0 and a == nums[i-1]:
+            continue
+        leftPtr = i + 1
+        rightPtr = len(nums) - 1
+        while leftPtr < rightPtr:
+            currentSum = a + nums[leftPtr] + nums[rightPtr]
+            if currentSum > 0:
+                rightPtr -= 1
+            elif currentSum < 0:
+                leftPtr += 1
+            else:
+                triplets_array.append([a, nums[leftPtr], nums[rightPtr]])
+                leftPtr += 1
+                while nums[leftPtr] == nums[leftPtr - 1] and leftPtr < rightPtr:
+                    leftPtr += 1
     return triplets_array
