@@ -15,8 +15,8 @@ def maxProfitPotential(prices):
 
     for currentPrice in prices:
         profit = currentPrice - minPrice
-        maxProfit = max(maxProfit,profit)
         minPrice = min(minPrice,currentPrice)
+        maxProfit = max(maxProfit,profit)       
     return maxProfit
 
 print(maxProfitPotential([7,1,5,3,6,4]))
