@@ -26,7 +26,7 @@ def lengthOfLongestSubstring(s: str):
             leftPtr += 1
         charSet.add(s[rightPtr])
         max_string_length = max(max_string_length, (rightPtr - leftPtr + 1))
-        return max_string_length
+    return max_string_length
     
 # test
 s = "abcabcbb"
