@@ -21,13 +21,13 @@ Output: -1
 
 def missingNumber(nums):
     maxDistinct = len(nums)
-    for i in range(maxDistinct + 1):
-        if i not in nums:
+    for i in range(maxDistinct + 1):                                          
+        if i != 0 and i not in nums:
             return i
-        else:
-            return maxDistinct + 1
-
-
-print(missingNumber([1, 1]))
+        elif i == maxDistinct:
+            return - 1
+    return maxDistinct + 1
+# print(missingNumber([1, 2,3,3]))
+# print(missingNumber([1, 1]))
 # print(missingNumber([1,2,2,4]))
-# print(missingNumber([3,1,2]))
+print(missingNumber([3,1,2]))
