@@ -1,0 +1,11 @@
+In the sliding window the two pointers usually move in the same direction and will never overtake each other.
+This ensures that each value is only visited at most twice and the time complexity is still 0(n)
+
+The sliding window pattern is used to process sequential data by maintaining a moving subset of elements, called a window. The pattern is aimed at reducing the use of nested loops in an algorithm. It may be viewed as a variation of the two pointers pattern, with the pointers being used to set the window bounds
+
+Why is this method more efficient? It isn’t if, for each window, we iterate over all the elements of the window because that gives us the same O(kn) time complexity.
+
+1. Use two pointers: start and end to represent a window.
+2. Move end to find a valid window.
+3. When a valid window is found, move start to find a smaller window.
+
