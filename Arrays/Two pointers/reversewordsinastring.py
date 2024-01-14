@@ -21,20 +21,20 @@ Output: "example good a"
 Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
 """
 
-# def reverseWords(s):
-#     words = s.split()
-#     left = 0
-#     right = len(words) - 1
-#     while left < right:
-#         words[left], words[right] = words[right], words[left]
-#         left += 1
-#         right -= 1
-#     return " ".join(words)
+def reverseWords(s):
+    words = s.split()
+    left = 0
+    right = len(words) - 1
+    while left < right:
+        words[left], words[right] = words[right], words[left]
+        left += 1
+        right -= 1
+    return " ".join(words)
 
-# s1 = "  hello world  "
-# print(reverseWords(s1))
+s1 = "  hello world  "
+print(reverseWords(s1))
 
-# s2 = s = "the sky is blue"
-# print(reverseWords(s2))
+s2 = s = "the sky is blue"
+print(reverseWords(s2))
 
 
