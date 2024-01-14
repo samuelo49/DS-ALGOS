@@ -7,16 +7,12 @@ def is_palindrome(s):
     rightPtr = len(s) - 1
     mis_match_count = 0
     while leftPtr <= rightPtr:
-        if s[leftPtr] != s[rightPtr] and mis_match_count <= 1:
+        if s[leftPtr] != s[rightPtr]:
+            if mis_match_count >= 1:
+                return False
             mis_match_count += 1
-            leftPtr += 1
-            rightPtr -= 1
-        elif s[leftPtr] != s[rightPtr] and mis_match_count <= 1:
-            return False
-        
-        else:
-            leftPtr += 1
-            rightPtr -= 1
+        leftPtr += 1
+        rightPtr -= 1
     return True 
 
 word = "ABCEBA"
