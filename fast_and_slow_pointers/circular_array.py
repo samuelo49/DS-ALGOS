@@ -29,6 +29,113 @@ Output: true
 Explanation: The graph shows how the indices are connected. White nodes are jumping forward, while red is jumping backward.
 We can see the cycle 0 --> 1 --> 0 --> ..., and while it is of size > 1, it has a node jumping forward and a node jumping backward, so it is not a cycle.
 We can see the cycle 3 --> 4 --> 3 --> ..., and all of its nodes are white (jumping in the same direction).
+
+Plan
+nums = [2, -1, 1, 2, 2]
+Visualizing the iteration
+===========================
+slow = 0
+fast = 0
+1st Iteration
+==============
+slow moves one step
+fast moves two steps
+
+slow = i = 2, value 1
+
+fast moves two steps remember
+1st 
+fast = i =2, value 1
+2nd 
+fast = i = 3, value 2
+
+2nd Iteration
+==============
+slow moves one step
+slow = i = 3, value 2
+
+fast moves two steps
+1st
+fast = i = 0, value = 2
+2nd
+fast = i = 2, value = 1
+
+3rd Iteration
+================
+slow = i = 0, value = 2
+
+fast = i = 3, value = 2
+fast = i = 0  value = 2
+
+4th iteration
+==========
+slow = i = 2, value = 1
+
+fast = i = 2, value = 1
+fast = i = 3, value = 2
+
+5th iteration
+slow i = 3, value = 2
+fast i = 0,value = 2
+fast i = 2, value = 1
+
+6th iteration
+slow i = 0, value = 2
+fast i = 3, value = 2
+fast i = 0, value = 2
+
+Steps for the Algo:
+1. Initialize two pointers, slow and fast, at the start of the array
+2. Enter a loop that continutes until slow and fast pointers meet.
+    - Move the slow pointer one step forward based on value at current index.
+    - Move the fast pointer two steps forward, each step based on the value at current index.
+    - If the slow an fast pointers meet, check if the cycle is valid
+3. To check if cycle is valid, ensure that every number in the cycle is either all positive
+    or negative.
+    - Start at the index where the slow and fast pointers met.
+    - Move forward based on the value at the current index and check the sign 
+        of the number at the next index
+    - if the sign is different, return False for an invalid cycle.
+    - if you return to the start index without finding a different sign, return True
+    for valid cycle
+4. if the slow anf fast pointers never meet, return False because there's no cycle.
+5. if a valid cycle is found, return True
+
+
 '''
 def circularArrayLoop(nums):
-    pass
+    n = len(nums)
+    slow = fast = 0
+    while True:
+        # move slow one step
+        slow = (slow + nums[slow]) % n
+        #move fast two steps 
+        fast = (fast + nums[fast]) % n
+        fast = (fast + nums[fast]) % n
+
+        #check if they meet
+        if slow == fast:
+            break
+    # check if the cycle is valid
+    sign = -1 if nums[slow] < 0 else 1
+    while True:
+        #sign of current number
+        is_current_num_negative = nums[slow] < 0
+
+        #check the sign of the first number in cycle
+        is_first_num_negative = sign < 0
+
+        # Check the sign of the first number in the cycle
+        is_first_num_negative = sign < 0 
+
+        # If the signs are different, the cycle is not valid
+        if is_current_num_negative != is_first_num_negative:
+            return False
+
+        # Move to the next number in the cycle
+        slow = (slow + nums[slow]) % n
+
+        # If we've gone through the entire cycle, it's valid
+        if slow == fast:
+            return True
+
