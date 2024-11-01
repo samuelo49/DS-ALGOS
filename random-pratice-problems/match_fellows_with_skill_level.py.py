@@ -29,3 +29,17 @@ def canMatchFellows(skillMap: dict) -> bool:
             skillTracker.remove(skill)
     return len(skillTracker) == 0
 
+def dailyTemperatures(T):
+    stack = []
+    res = [0] * len(T)
+    for i in range(len(T) - 1, -1, -1):
+        while stack and T[i] >= T[stack[-1]]:
+            stack.pop()
+        if stack:
+            res[i] = stack[-1] - i
+        stack.append(i)
+    return res
+
+# Test the function
+T = [73, 74, 75, 71, 69, 72, 76, 73]
+print(dailyTemperatures(T))  # Output: [1, 1, 4, 2, 1, 1, 0, 0]

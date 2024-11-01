@@ -53,5 +53,9 @@ def isPalindrome(s):
 s = "A man, a plan, a canal: Panama"
 print(isPalindrome(s=s))
 
+def isPalindrome(s):
+    s = ''.join(c for c in s if c.isalnum()).lower()
+    return s == s[::-1]
+
 
 

@@ -6,8 +6,23 @@ matrix = [ [1, 2,  3,  4],
         ]
 1: move postiveDiagonally  => 4,7,10,13
 """
+# rows are len(matrix)
+# colums are len(matrix[0])
 
+# let me access each row 
+'''
+for row in matrix:
+    print(row)
+'''
+# lets print each colum
+'''
+for j in range(len(matrix[0])):
+col = []
+    for i in range(len(matrix))
+        col.append(matrix[i][j])
+    print(col)
 
+'''
 def negativeDiagonal(arr):
     m = len(arr)
     n = len(arr[0])

@@ -86,3 +86,13 @@ print(arrayifyTree(insert_bst(None, 1)))  # [1]
 #         2   4  7
 #        /     \
 #       1       5
+
+
+def insert_bst(bst: Node, val: int) -> Node:
+    if bst is None:
+        return Node(val)
+    if bst.val < val:
+        bst.right = insert_bst(bst.right, val)
+    elif bst.val > val:
+        bst.left = insert_bst(bst.left, val)
+    return bst

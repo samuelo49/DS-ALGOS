@@ -8,7 +8,7 @@ def is_palindrome(s):
     mis_match_count = 0
     while leftPtr <= rightPtr:
         if s[leftPtr] != s[rightPtr]:
-            if mis_match_count >= 1:
+            if mis_match_count > 1:
                 return False
             mis_match_count += 1
         leftPtr += 1
